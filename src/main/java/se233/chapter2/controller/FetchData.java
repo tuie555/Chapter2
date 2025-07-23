@@ -20,7 +20,8 @@ public class FetchData {
     public static List<CurrencyEntity> fetchRange(String symbol, int N) {
         String dateEnd = LocalDate.now().format(formatter);
         String dateStart = LocalDate.now().minusDays(N).format(formatter);
-        String urlStr = String.format("https://cmu.to/SE233currencyapi?base=THB&symbol=%s&start_date=%s&end_date=%s", symbol, dateStart, dateEnd);
+        var Base = AllEventHandlers.EnteredCode;
+        String urlStr = String.format("https://cmu.to/SE233currencyapi?base=" + Base+ "&symbol=%s&start_date=%s&end_date=%s", symbol, dateStart, dateEnd);
         List<CurrencyEntity> histList = new ArrayList<>();
         try {
             String retrievedJson = IOUtils.toString(new URL(urlStr), Charset.defaultCharset());
